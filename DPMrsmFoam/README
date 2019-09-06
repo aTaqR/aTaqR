@@ -1,0 +1,3 @@
+Modification of DPMFoam and MPPICFoam solvers to include Reynold Stress Models, not present in the original solver
+
+Tested on OpenFOAM v6 (CFD direct version) for Linux
