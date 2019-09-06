@@ -1,0 +1,22 @@
+#!/bin/sh
+cd ${0%/*} || exit 1                        # Run from this directory
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions  # Tutorial clean functions
+# 
+# for caseName in aeroFoil_snappyHexMesh background_snappyHexMesh
+# do
+#     ( cd $caseName && cleanCase )
+# done
+# 
+# for caseName in aeroFoil_overset background_overset
+# do
+#     ( cd $caseName && cleanCase0 )
+# done
+# Create gear0 mesh using cfMesh
+( cd gear0 && ./Allclean )
+
+# Create gear1 mesh using cfMesh
+( cd gear1 && ./Allclean )
+
+( cd case_overset && ./Allclean )
+
+#------------------------------------------------------------------------------

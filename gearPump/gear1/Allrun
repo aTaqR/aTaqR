@@ -1,0 +1,13 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+./Allclean
+runApplication cartesian2DMesh
+runApplication checkMesh
+
+#------------------------------------------------------------------------------
+# mapFields /home/juggernaut/OpenFOAM/juggernaut-6/run/GearPump/rootBlower/new/extrude/sim1/ -sourceTime latestTime
+# sed -n '1,214358p' rootblower2.stl > rootblower3.stl

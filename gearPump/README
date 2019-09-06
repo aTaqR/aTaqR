@@ -1,0 +1,39 @@
+Present case is built over an existing tutorial 
+($FOAM_TUTORIALS/compressible/overRhoPimpleDyMFoam/twoSimpleRotors/)
+
+Geometry borrowed from  Alejandro Roger Ull's work.
+(https://www.cfd-online.com/Forums/openfoam/103804-dynamic-mesh-gear-pump.html)
+
+Tested on OpenFOAM® v1906 (ESI-OpenCFD version) which comes with overset capabilities 
+(https://www.openfoam.com/releases/openfoam-v1906/)
+
+In order to use overset meshing in CFD direct's version
+(https://openfoam.org/download/)
+, either of the following libraries need to be compiled
+
+https://github.com/vvukcevic/OversetMesh
+
+https://github.com/bellero/bellerophon
+
+-------------------------
+CASE DETAILS
+
+transient compressible, rotating mesh
+
+meshed using cfmesh
+relatively coarse meshing
+
+solved using overset grid 
+(more info on https://www.openfoam.com/documentation/guides/latest/doc/guide-overset.html)
+
+no validation
+-------------------------
+gear0/
+    For generating (2D) mesh of bottom gear
+    
+gear1/
+    For generating (2D) mesh of top gear
+
+case_overset/
+    For generating (2D) mesh of the casing
+    and overset mesh for running the case

@@ -1,0 +1,77 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | OpenFOAM GUI Project: creativeFields           |
+|  \\    /   O peration     | Version:  0.8.9.0                                  |
+|   \\  /    A nd           | Web: www.c-fields.com                                       |
+|    \\/     M anipulation  |                                                |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+version	2;
+format	ascii;
+class	dictionary;
+location	"system";
+object	meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+maxCellSize 0.0005;
+
+surfaceFile "casing.stl";
+
+// boundaryCellSize    0.0005;
+
+// boundaryCellSizeRefinementThickness 0.001;
+
+localRefinement
+{
+    case
+    {
+        cellSize    0.0003;
+    }
+}
+
+// boundaryLayers
+// {
+//     nLayers         6;
+//     thicknessRatio  1.2;
+// }
+// objectRefinements
+// {
+//     sphereExample
+//     {
+//         type                sphere;
+//         cellSize            0.0005;
+//         centre              (0.180 0.340 0.003);
+//         radius              0.001;
+//         refinementThickness 0;
+//     }
+// }
+
+renameBoundary
+{
+    defaultName     EmptyFaces;
+    defaultType     empty;
+
+    newPatchNames
+    {
+        "case.*"
+        {
+            newName     casing;
+            type     wall;
+        }
+        "inlet.*"
+        {
+            newName     inlet;
+            type     patch;
+        }
+        "outlet.*"
+        {
+            newName     outlet;
+            type     patch;
+        }
+    }
+}
+// ************************************************************************* //

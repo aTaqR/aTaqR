@@ -1,0 +1,74 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | OpenFOAM GUI Project: creativeFields           |
+|  \\    /   O peration     | Version:  0.8.9.0                                  |
+|   \\  /    A nd           | Web: www.c-fields.com                                       |
+|    \\/     M anipulation  |                                                |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+version	2;
+format	ascii;
+class	dictionary;
+location	"system";
+object	meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+maxCellSize 0.0005;//0.01;//0.0025;//
+
+surfaceFile "gear0o.stl";
+
+// boundaryCellSize    0.0005;
+// boundaryCellSizeRefinementThickness 0.001;
+
+localRefinement
+{
+//     bottomoverset
+//     {
+//         cellSize    0.0003;//0.0001;
+//     }
+//     bottomlobe
+//     {
+//         cellSize    0.0003;//0.0001;//0.001;//
+//     }
+}
+
+// boundaryLayers
+// {
+//     nLayers         6;
+//     thicknessRatio  1.2;
+// }
+// objectRefinements
+// {
+//     sphereExample
+//     {
+//         type                sphere;
+//         cellSize            0.0005;
+//         centre              (0.180 0.340 0.003);
+//         radius              0.001;
+//         refinementThickness 0;
+//     }
+// }
+renameBoundary
+{
+    defaultName     EmptyFaces;//gear0Empty;//
+    defaultType     empty;
+
+    newPatchNames
+    {
+        "gear0.*"
+        {
+            newName     hole;//hole0;//
+            type     wall;
+        }
+        "gear0overset.*"
+        {
+            newName     overset0;//overset1;
+            type     overset;
+        }
+    }
+}
+// ************************************************************************* //
